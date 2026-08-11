@@ -5,8 +5,9 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   test: {
-    environment: 'jsdom',         // <-- This simulates the browser 'document'
+    environment: 'jsdom',
     setupFiles: ['./vitest.setup.ts'],
+    // Add this line to block Vitest from reading Playwright tests:
+    exclude: ['**/node_modules/**', '**/tests/**', '**/dist/**'], 
   },
 });
-
