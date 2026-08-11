@@ -34,3 +34,24 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+// import { test, expect } from '@playwright/test';
+
+// test('has title', async ({ page }) => {
+//   await page.goto('https://playwright.dev/');
+
+//   // Expect a title "to contain" a substring.
+//   await expect(page).toHaveTitle(/Playwright/);
+// });
+
+// test('get started link', async ({ page }) => {
+//   await page.goto('https://playwright.dev/');
+
+//   // Click the get started link.
+//   await page.getByRole('link', { name: 'Get started' }).click();
+
+//   // Expects page to have a heading with the name of Installation.
+//   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+// });
+
