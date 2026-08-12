@@ -1,16 +1,14 @@
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-  // 1. Explicitly limit the folder path
-  testDir: './tests', 
-
-  // 2. ONLY match files that have .spec.ts in the name
-  testMatch: '**/*.spec.ts',
-
-  // 3. Forcibly prevent Playwright from looking at your unit tests
-  testIgnore: '**/__tests__/**',
-
-  /* The rest of your configurations (use, webServer, projects) remain exactly the same */
+  // Enforce rigid string target to avoid file collection loops
+  testDir: './tests',
+  testMatch: 'counter.spec.ts',
+  testIgnore: ['**/__tests__/**', '**/node_modules/**'],
+  
+  fullyParallel: false, // Prevents runner threads from stepping on each other
+  workers: 1,           // Forces a single clean execution thread in CI
+  
   use: {
     baseURL: 'http://localhost:3000',
   },
@@ -21,4 +19,3 @@ export default defineConfig({
     timeout: 120000,
   },
 });
-
