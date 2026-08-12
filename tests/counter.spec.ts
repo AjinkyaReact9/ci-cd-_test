@@ -1,15 +1,12 @@
+// tests/counter.spec.ts
 import { test, expect } from '@playwright/test';
 
-// The callback function is no longer marked as async
-test('Alternative promise chain execution', ({ page }) => {
-  return page.goto('/')
-    .then(() => {
-      return expect(page.getByTestId('counter-value')).toHaveText('0');
-    })
-    .then(() => {
-      return page.getByTestId('increment-btn').click();
-    })
-    .then(() => {
-      return expect(page.getByTestId('counter-value')).toHaveText('1');
-    });
+test('should increment the counter when button is clicked', async ({ page }) => {
+  await page.goto('/');
+
+  const counterValue = page.getByTestId('counter-value');
+  await expect(counterValue).toHaveText('0');
+
+  await page.getByTestId('increment-btn').click();
+  await expect(counterValue).toHaveText('1');
 });
