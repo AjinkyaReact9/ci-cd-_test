@@ -1,6 +1,6 @@
 // tests/counter.spec.ts
 import { test, expect } from '@playwright/test';
-
+test.describe('Counter Feature Tests', () => {
 // Ensure this block is NOT marked as async. Only the internal functions can be async.
 test('should increment the counter when button is clicked', async ({ page }) => {
   await page.goto('/');
@@ -12,3 +12,4 @@ test('should increment the counter when button is clicked', async ({ page }) => 
 
   await expect(counterValue).toHaveText('1');
 });
+})

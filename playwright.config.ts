@@ -1,14 +1,17 @@
 import { defineConfig, devices } from '@playwright/test';
+import path from 'path'; // 1. Import path utility
 
 export default defineConfig({
-  // Enforce rigid string target to avoid file collection loops
-  testDir: './tests',
+  // 2. Force an absolute path structure that works on Windows and Linux
+  testDir: path.join(__dirname, 'tests'), 
+  
+  // 3. Strictly lock down file targeting match rules
   testMatch: 'counter.spec.ts',
   testIgnore: ['**/__tests__/**', '**/node_modules/**'],
-  
-  fullyParallel: false, // Prevents runner threads from stepping on each other
-  workers: 1,           // Forces a single clean execution thread in CI
-  
+
+  fullyParallel: false,
+  workers: 1,
+
   use: {
     baseURL: 'http://localhost:3000',
   },
