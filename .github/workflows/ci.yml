@@ -6,12 +6,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
       - uses: actions/setup-node@v4
         with:
-          node-version: "24"
+          node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
+        # Force a clean installation that resolves duplicate tree structures
         run: npm ci
 
       - name: Install Playwright Browsers
@@ -21,7 +23,8 @@ jobs:
         run: npm run test:unit
 
       - name: Run Playwright Functional Tests
-        run: npx playwright test
+        # Force Playwright to run explicitly against our edited config file 
+        run: npx playwright test --config=playwright.config.ts
 
       - name: Upload Playwright Artifacts
         if: always()
